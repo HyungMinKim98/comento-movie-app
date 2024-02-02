@@ -1,0 +1,28 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+.movie-item img {
+  height: 300px; /* Set a fixed height */
+  object-fit: cover; /* If the picture's aspect ratio doesn't match, it will be cropped */
+}
+
+.movie-item h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 0.5rem;
+  color: #333; /* Change the color of the text */
+}

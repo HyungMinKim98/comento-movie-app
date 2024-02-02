@@ -16,16 +16,14 @@ function MovieList() {
   };
 
   return (
-    <ul>
+    <div>
       {movies.map(movie => (
-        <li key={movie.imdbID}>
-          <Link to={`/movie/${movie.imdbID}`}>
-            <h3>{movie.Title}</h3>
-            <img src={movie.Poster} alt={movie.Title} />
-          </Link>
-        </li>
+        <Link to={`/movie/${movie.imdbID}`} key={movie.imdbID}>
+          <h2>{movie.Title}</h2>
+          <img src={movie.Poster} alt={movie.Title} />
+        </Link>
       ))}
-    </ul>
+    </div>
   );
 }
 

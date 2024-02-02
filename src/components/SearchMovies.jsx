@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function SearchMovies() {
+function useFetchMovies() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    if (query) {
-      fetchMovies();
-    }
-  }, [query]);
+  const [page, setPage] = useState(1);
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`);
+      const response = await fetch(`http://www.omdbapi.com/?s=${query}&page=${page}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`);
       const data = await response.json();
       if (data.Search) {
-        setMovies(data.Search);
+        setMovies(prevMovies => [...prevMovies, ...data.Search]);
       } else {
         setMovies([]);
       }
@@ -24,21 +20,33 @@ function SearchMovies() {
       setMovies([]);
     }
   };
-  
+
+  return { query, setQuery, movies, setPage, fetchMovies };
+}
+
+function SearchMovies() {
+  const { query, setQuery, movies, setPage, fetchMovies } = useFetchMovies();
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       fetchMovies();
     }
   }
-  
+
+  const handleLoadMore = () => {
+    setPage(prevPage => prevPage + 1);
+    fetchMovies();
+  }
+
   return (
     <div>
-    <input type="text" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={handleKeyPress} />
+      <input type="text" value={query} onChange={e => setQuery(e.target.value)} onKeyPress={handleKeyPress} />
+      <button onClick={handleLoadMore}>Load more</button>
       {movies.map(movie => (
-        <div key={movie.id}>
-          <h2>{movie.title}</h2>
-          <img src={movie.poster} alt={movie.title} />
-        </div>
+        <Link to={`/movie/${movie.imdbID}`} key={movie.imdbID}>
+          <h2>{movie.Title}</h2>
+          <img src={movie.Poster} alt={movie.Title} />
+        </Link>
       ))}
     </div>
   );

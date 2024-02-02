@@ -1,0 +1,23 @@
+.movie-detail {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem; /* 추가된 코드 */
+}
+
+.movie-detail h1 {
+  font-size: 2em;
+  color: #333;
+}
+
+.movie-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+.movie-detail p {
+  font-size: 1em;
+  color: #666;
+}
+
