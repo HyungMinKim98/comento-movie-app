@@ -1,23 +1,27 @@
 .movie-detail {
   width: 80%;
-  margin: 0 auto;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-left: 1rem; /* 추가된 코드 */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* 그림자를 더 크게 하여 입체감을 높임 */
+  margin: 2rem auto; /* 상하로 여백을 주어 디자인을 깔끔하게 만듬 */
+  border-radius: 15px; /* 모서리를 둥글게 하여 부드러운 느낌을 줌 */
+  background-color: #f8f9fa; /* 배경색을 흰색 계열로 변경하여 가독성을 높임 */
 }
 
 .movie-detail h1 {
-  font-size: 2em;
-  color: #333;
+  font-size: 2.5em; /* 폰트 사이즈를 더 크게 하여 제목을 강조함 */
+  color: #343a40; /* 글자 색을 더 어둡게 하여 대비를 높임 */
+  margin-bottom: 1rem; /* 제목 아래에 여백을 주어 내용과의 구분을 높임 */
 }
 
 .movie-detail img {
   max-width: 100%;
   height: auto;
+  border-radius: 10px; /* 이미지 모서리를 둥글게 하여 디자인을 통일시킴 */
+  margin-bottom: 1rem; /* 이미지 아래에 여백을 주어 내용과의 구분을 높임 */
 }
 
 .movie-detail p {
   font-size: 1em;
-  color: #666;
+  color: #495057; /* 글자 색을 더 어둡게 하여 가독성을 높임 */
+  line-height: 1.5; /* 줄 간격을 더 넓게 하여 읽기 쉽게 만듬 */
 }
-
